@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R1M-ca-i8q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,13 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Ee-9Db">
-                                <rect key="frame" x="107" y="289" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Ee-9Db">
+                                <rect key="frame" x="327" y="619" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QQ7-AE-5Jq"/>
-                                    <constraint firstAttribute="width" constant="40" id="Y3u-mr-fTm"/>
+                                    <constraint firstAttribute="height" constant="40" id="0js-OA-j3g"/>
+                                    <constraint firstAttribute="width" constant="40" id="Ziq-BE-xis"/>
+                                    <constraint firstAttribute="width" secondItem="ILH-Ee-9Db" secondAttribute="height" multiplier="1:1" id="y0c-aI-Ur2"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Voyage"/>
+                                <state key="normal" title="M" image="Voyage"/>
                             </button>
                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-dA-iHg" customClass="RecordButton" customModule="Voyage" customModuleProvider="target">
                                 <rect key="frame" x="137" y="547" width="100" height="100"/>
@@ -120,13 +122,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gJI-Fg-0SS" secondAttribute="trailing" id="1mK-A4-gYy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ILH-Ee-9Db" secondAttribute="trailing" constant="8" id="2Aa-kq-LkQ"/>
+                            <constraint firstItem="S7i-yb-zOb" firstAttribute="top" secondItem="ILH-Ee-9Db" secondAttribute="bottom" constant="8" id="690-L8-Ld8"/>
                             <constraint firstItem="gJI-Fg-0SS" firstAttribute="top" secondItem="XF2-3a-Twp" secondAttribute="top" id="QVq-eb-Dvd"/>
                             <constraint firstItem="ZCe-dA-iHg" firstAttribute="centerX" secondItem="XF2-3a-Twp" secondAttribute="centerX" id="RtQ-ew-wq3"/>
-                            <constraint firstItem="ZCe-dA-iHg" firstAttribute="top" secondItem="ILH-Ee-9Db" secondAttribute="bottom" constant="8" id="fLv-RX-ckM"/>
                             <constraint firstItem="ZCe-dA-iHg" firstAttribute="centerX" secondItem="XF2-3a-Twp" secondAttribute="centerX" id="i6k-Z3-g5s"/>
                             <constraint firstItem="S7i-yb-zOb" firstAttribute="top" secondItem="ZCe-dA-iHg" secondAttribute="bottom" constant="20" id="lcl-PE-u1g"/>
                             <constraint firstItem="S7i-yb-zOb" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="bottom" id="tcb-w8-XFx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ILH-Ee-9Db" secondAttribute="trailing" constant="-8" id="xge-Uc-iA8"/>
                             <constraint firstItem="gJI-Fg-0SS" firstAttribute="leading" secondItem="XF2-3a-Twp" secondAttribute="leading" id="zJo-TY-PZx"/>
                         </constraints>
                     </view>
