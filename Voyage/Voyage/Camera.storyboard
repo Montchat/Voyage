@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R1M-ca-i8q">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="jl0-gM-2dE">
+            <objects>
+                <viewController storyboardIdentifier="CameraVC" id="R1M-ca-i8q" customClass="CameraViewController" customModule="Voyage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yQq-gN-LA3"/>
+                        <viewControllerLayoutGuide type="bottom" id="S7i-yb-zOb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XF2-3a-Twp" customClass="PreviewView" customModule="Voyage" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Ee-9Db">
+                                <rect key="frame" x="107" y="289" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QQ7-AE-5Jq"/>
+                                    <constraint firstAttribute="width" constant="40" id="Y3u-mr-fTm"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Voyage"/>
+                            </button>
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-dA-iHg" customClass="RecordButton" customModule="Voyage" customModuleProvider="target">
+                                <rect key="frame" x="137" y="547" width="100" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="pgf-2W-LBm"/>
+                                    <constraint firstAttribute="height" constant="100" id="xj5-5p-m4e"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Voyage"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAmount">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="1" green="0.96862745100000003" blue="0.50196078430000002" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mWq-BB-4mb" appends="YES" id="OxJ-XN-hQd"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJI-Fg-0SS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rc3-Er-fBS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pQR-nn-GHV" appends="YES" id="UHW-TU-wfz"/>
+                                        </connections>
+                                    </imageView>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-nJ-mIm">
+                                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Ulz-QH-gVi"/>
+                                            <constraint firstAttribute="height" constant="40" id="cmb-NP-w7S"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="Voyage"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="R1M-ca-i8q" eventType="touchUpInside" id="N6r-nx-gzi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-8k-umu">
+                                        <rect key="frame" x="327" y="8" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="75V-5N-OBh"/>
+                                            <constraint firstAttribute="height" constant="40" id="P2G-DA-piU"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="Voyage"/>
+                                        <connections>
+                                            <action selector="textButtonPressed:" destination="R1M-ca-i8q" eventType="touchUpInside" id="UxG-BQ-A64"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-yH-GNC">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ZDH-pW-4sT"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6Gi-mE-dKX" appends="YES" id="b9e-ef-gdA"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsF-rs-wle">
+                                        <rect key="frame" x="138" y="547" width="100" height="100"/>
+                                        <state key="normal" backgroundImage="Voyage"/>
+                                        <connections>
+                                            <action selector="submitButtonPressed:" destination="R1M-ca-i8q" eventType="touchUpInside" id="nw7-ZV-dLb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZhS-yH-GNC" firstAttribute="top" secondItem="yuc-8k-umu" secondAttribute="bottom" constant="100" id="4W8-Ae-u7U"/>
+                                    <constraint firstItem="HsF-rs-wle" firstAttribute="centerX" secondItem="gJI-Fg-0SS" secondAttribute="centerX" id="KZS-wa-8JC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rc3-Er-fBS" secondAttribute="bottom" id="PGK-fw-S9z"/>
+                                    <constraint firstItem="Rc3-Er-fBS" firstAttribute="leading" secondItem="gJI-Fg-0SS" secondAttribute="leading" id="Pdt-PW-qDY"/>
+                                    <constraint firstItem="Rc3-Er-fBS" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" id="abZ-GO-PYH"/>
+                                    <constraint firstItem="NB9-nJ-mIm" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="8" id="agz-du-hyD"/>
+                                    <constraint firstItem="yuc-8k-umu" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="8" id="dOX-5S-R2t"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZhS-yH-GNC" secondAttribute="trailing" id="gzT-pR-Lj4"/>
+                                    <constraint firstAttribute="trailing" secondItem="yuc-8k-umu" secondAttribute="trailing" constant="8" id="n3P-oo-Gr4"/>
+                                    <constraint firstItem="ZhS-yH-GNC" firstAttribute="leading" secondItem="gJI-Fg-0SS" secondAttribute="leading" id="oRI-L9-KJq"/>
+                                    <constraint firstItem="NB9-nJ-mIm" firstAttribute="leading" secondItem="gJI-Fg-0SS" secondAttribute="leading" constant="8" id="vjv-5A-qwe"/>
+                                    <constraint firstAttribute="bottom" secondItem="HsF-rs-wle" secondAttribute="bottom" constant="20" id="yrx-NU-TTF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rc3-Er-fBS" secondAttribute="trailing" id="zfz-bm-vqY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gJI-Fg-0SS" secondAttribute="trailing" id="1mK-A4-gYy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ILH-Ee-9Db" secondAttribute="trailing" constant="8" id="2Aa-kq-LkQ"/>
+                            <constraint firstItem="gJI-Fg-0SS" firstAttribute="top" secondItem="XF2-3a-Twp" secondAttribute="top" id="QVq-eb-Dvd"/>
+                            <constraint firstItem="ZCe-dA-iHg" firstAttribute="centerX" secondItem="XF2-3a-Twp" secondAttribute="centerX" id="RtQ-ew-wq3"/>
+                            <constraint firstItem="ZCe-dA-iHg" firstAttribute="top" secondItem="ILH-Ee-9Db" secondAttribute="bottom" constant="8" id="fLv-RX-ckM"/>
+                            <constraint firstItem="ZCe-dA-iHg" firstAttribute="centerX" secondItem="XF2-3a-Twp" secondAttribute="centerX" id="i6k-Z3-g5s"/>
+                            <constraint firstItem="S7i-yb-zOb" firstAttribute="top" secondItem="ZCe-dA-iHg" secondAttribute="bottom" constant="20" id="lcl-PE-u1g"/>
+                            <constraint firstItem="S7i-yb-zOb" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="bottom" id="tcb-w8-XFx"/>
+                            <constraint firstItem="gJI-Fg-0SS" firstAttribute="leading" secondItem="XF2-3a-Twp" secondAttribute="leading" id="zJo-TY-PZx"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cancelImageButton" destination="NB9-nJ-mIm" id="ZDz-PR-aeL"/>
+                        <outlet property="messageTextField" destination="ZhS-yH-GNC" id="sVO-Y8-RXk"/>
+                        <outlet property="previewView" destination="XF2-3a-Twp" id="c9n-26-ThB"/>
+                        <outlet property="record" destination="ZCe-dA-iHg" id="9tY-Zk-3M8"/>
+                        <outlet property="recordedPictureImageView" destination="Rc3-Er-fBS" id="YTU-ki-kFm"/>
+                        <outlet property="recordedView" destination="gJI-Fg-0SS" id="lcQ-7s-4e9"/>
+                        <outlet property="submitButton" destination="HsF-rs-wle" id="7Nf-77-Oua"/>
+                        <outlet property="textButton" destination="yuc-8k-umu" id="Gsb-H4-30V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHt-D1-mrp" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6Gi-mE-dKX">
+                    <connections>
+                        <action selector="moveVertically:" destination="R1M-ca-i8q" id="6vg-fD-SoW"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="pQR-nn-GHV">
+                    <connections>
+                        <action selector="tapGesture:" destination="R1M-ca-i8q" id="Rh5-29-KrG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="mWq-BB-4mb">
+                    <connections>
+                        <action selector="recordButtonHeld:" destination="R1M-ca-i8q" id="WFQ-wO-w2V"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="867.5" y="463.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Voyage" width="100" height="100"/>
+    </resources>
+</document>
