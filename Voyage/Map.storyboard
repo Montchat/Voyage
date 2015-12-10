@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n4b-eY-w9d">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="SZ2-44-YOp">
+            <objects>
+                <viewController storyboardIdentifier="MapVC" id="n4b-eY-w9d" customClass="MapViewController" customModule="Voyage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="doJ-xP-631"/>
+                        <viewControllerLayoutGuide type="bottom" id="D7z-dr-75G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DS0-ka-JiG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vEF-O5-CvX">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1Wi-E0-P5p" appends="YES" id="14N-KG-hsg"/>
+                                </connections>
+                            </mapView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETp-y6-4Rq">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xI-ek-9oA">
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="dyg-2W-UZN"/>
+                                    <constraint firstAttribute="height" constant="40" id="hJk-Ba-v83"/>
+                                </constraints>
+                                <state key="normal" title="C" backgroundImage="Voyage">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="n4b-eY-w9d" eventType="touchUpInside" id="atJ-xn-G40"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vEF-O5-CvX" secondAttribute="trailing" id="0Jw-vk-9Sc"/>
+                            <constraint firstItem="1xI-ek-9oA" firstAttribute="leading" secondItem="DS0-ka-JiG" secondAttribute="leadingMargin" id="Cb0-wI-rgA"/>
+                            <constraint firstItem="ETp-y6-4Rq" firstAttribute="centerY" secondItem="DS0-ka-JiG" secondAttribute="centerY" id="Fzm-SH-PHk"/>
+                            <constraint firstItem="vEF-O5-CvX" firstAttribute="top" secondItem="doJ-xP-631" secondAttribute="bottom" id="Iji-0v-Hj4"/>
+                            <constraint firstItem="D7z-dr-75G" firstAttribute="top" secondItem="vEF-O5-CvX" secondAttribute="bottom" id="Ylg-5k-eHl"/>
+                            <constraint firstItem="vEF-O5-CvX" firstAttribute="leading" secondItem="DS0-ka-JiG" secondAttribute="leading" id="aXk-ke-NeM"/>
+                            <constraint firstAttribute="trailing" secondItem="ETp-y6-4Rq" secondAttribute="trailing" id="pAb-Nh-NDx"/>
+                            <constraint firstItem="1xI-ek-9oA" firstAttribute="top" secondItem="doJ-xP-631" secondAttribute="bottom" constant="8" id="w08-0g-EIQ"/>
+                            <constraint firstItem="ETp-y6-4Rq" firstAttribute="leading" secondItem="DS0-ka-JiG" secondAttribute="leading" id="wBL-2o-Qub"/>
+                            <constraint firstItem="ETp-y6-4Rq" firstAttribute="centerX" secondItem="DS0-ka-JiG" secondAttribute="centerX" id="ycY-bt-z3D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="1xI-ek-9oA" id="Arj-jb-PU6"/>
+                        <outlet property="journeyPickerView" destination="ETp-y6-4Rq" id="5FL-aZ-s5c"/>
+                        <outlet property="longPressGestureRecognizer" destination="1Wi-E0-P5p" id="1ac-Ck-WCW"/>
+                        <outlet property="mapView" destination="vEF-O5-CvX" id="5l1-iW-8JA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0JB-eA-3i6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="1Wi-E0-P5p">
+                    <connections>
+                        <action selector="mapViewPressedAndHeld:" destination="n4b-eY-w9d" id="o1y-6T-fCe"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="386" y="385"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Voyage" width="100" height="100"/>
+    </resources>
+</document>

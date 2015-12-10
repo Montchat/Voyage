@@ -26,6 +26,8 @@ import UIKit
         CGContextSetLineWidth(context, 10)
         CGContextSetLineCap(context, .Round)
         
+//        CGContextStrokeEllipseInRect(context, CGRectInset(rect, 20, 20))
+        
         progressColor.set()
         
         let center = CGPoint(x: rect.midX, y: rect.midY)

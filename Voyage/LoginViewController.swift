@@ -16,7 +16,7 @@ private let PASSWORD_IS_EMPTY = "Password is Empty"
 
 private let WELCOMEVC = "WelcomeVC"
 private let STORYBOARD_NAME = "Camera"
-private let DESTINATION_VC = "GameplayNavigationController"
+private let DESTINATION_VC = "CameraVC"
 
 private let ALERT = "Alert"
 private let ALERT_MSG = "Incorret username or password"
@@ -46,20 +46,29 @@ class LoginViewController: UIViewController {
             return alertError(LOGIN_FAILED, reason: PASSWORD_IS_EMPTY)}
         
         RailsRequest.session().loginWithUsername(username, andPassword: password) { (success) -> () in
-            if let token = RailsRequest.session().token {
-                print("requested token: \(token)")
-                if token == EMPTY_STRING {
-                    self.alertError(LOGIN_FAILED, reason: INVALID_USERNAME)
-                } else if let vc = UIStoryboard(name: STORYBOARD_NAME, bundle: nil).instantiateViewControllerWithIdentifier(DESTINATION_VC) as? CameraViewController {
-                    print("username \(username)")
+            print("success")
+            
+            if let vc = UIStoryboard(name: "Camera", bundle: nil).instantiateInitialViewController() {
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+        
+        
+//            if let token = RailsRequest.session().token {
+//                print("token \(token).")
+//                if token == EMPTY_STRING {
+//                    self.alertError(LOGIN_FAILED, reason: INVALID_USERNAME)
+//                } else {
+//                    if let vc = UIStoryboard(name: "Camera", bundle: nil).instantiateViewControllerWithIdentifier("CameraVC") as? CameraViewController {
+//                        self.presentViewController(vc, animated: true, completion: nil)
+            
                     
-                    self.presentViewController(vc, animated: true, completion: nil)
-                    
-                }
+//                    }
                 
+//                }
+            
             }
             
-        }
+//        }
     
     }
     

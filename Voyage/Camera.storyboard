@@ -18,14 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Ee-9Db">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Ee-9Db">
                                 <rect key="frame" x="327" y="619" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0js-OA-j3g"/>
                                     <constraint firstAttribute="width" constant="40" id="Ziq-BE-xis"/>
                                     <constraint firstAttribute="width" secondItem="ILH-Ee-9Db" secondAttribute="height" multiplier="1:1" id="y0c-aI-Ur2"/>
                                 </constraints>
-                                <state key="normal" title="M" image="Voyage"/>
+                                <state key="normal" title="M" image="Voyage">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapButtonPressed:" destination="R1M-ca-i8q" eventType="touchUpInside" id="axy-UO-q2s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-dA-iHg" customClass="RecordButton" customModule="Voyage" customModuleProvider="target">
                                 <rect key="frame" x="137" y="547" width="100" height="100"/>
@@ -40,7 +45,7 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                        <color key="value" red="1" green="0.96862745100000003" blue="0.50196078430000002" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="1" green="0.01506604950220769" blue="0.074986003696867143" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -58,7 +63,7 @@
                                         </connections>
                                     </imageView>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-nJ-mIm">
-                                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                        <rect key="frame" x="8" y="20" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Ulz-QH-gVi"/>
                                             <constraint firstAttribute="height" constant="40" id="cmb-NP-w7S"/>
@@ -69,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-8k-umu">
-                                        <rect key="frame" x="327" y="8" width="40" height="40"/>
+                                        <rect key="frame" x="327" y="20" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="75V-5N-OBh"/>
                                             <constraint firstAttribute="height" constant="40" id="P2G-DA-piU"/>
@@ -80,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-yH-GNC">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="160" width="375" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -108,8 +113,8 @@
                                     <constraint firstAttribute="bottom" secondItem="Rc3-Er-fBS" secondAttribute="bottom" id="PGK-fw-S9z"/>
                                     <constraint firstItem="Rc3-Er-fBS" firstAttribute="leading" secondItem="gJI-Fg-0SS" secondAttribute="leading" id="Pdt-PW-qDY"/>
                                     <constraint firstItem="Rc3-Er-fBS" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" id="abZ-GO-PYH"/>
-                                    <constraint firstItem="NB9-nJ-mIm" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="8" id="agz-du-hyD"/>
-                                    <constraint firstItem="yuc-8k-umu" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="8" id="dOX-5S-R2t"/>
+                                    <constraint firstItem="NB9-nJ-mIm" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="20" id="agz-du-hyD"/>
+                                    <constraint firstItem="yuc-8k-umu" firstAttribute="top" secondItem="gJI-Fg-0SS" secondAttribute="top" constant="20" id="dOX-5S-R2t"/>
                                     <constraint firstAttribute="trailing" secondItem="ZhS-yH-GNC" secondAttribute="trailing" id="gzT-pR-Lj4"/>
                                     <constraint firstAttribute="trailing" secondItem="yuc-8k-umu" secondAttribute="trailing" constant="8" id="n3P-oo-Gr4"/>
                                     <constraint firstItem="ZhS-yH-GNC" firstAttribute="leading" secondItem="gJI-Fg-0SS" secondAttribute="leading" id="oRI-L9-KJq"/>
@@ -135,9 +140,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cancelImageButton" destination="NB9-nJ-mIm" id="ZDz-PR-aeL"/>
+                        <outlet property="mapButton" destination="ILH-Ee-9Db" id="i0K-C7-xCO"/>
                         <outlet property="messageTextField" destination="ZhS-yH-GNC" id="sVO-Y8-RXk"/>
                         <outlet property="previewView" destination="XF2-3a-Twp" id="c9n-26-ThB"/>
                         <outlet property="record" destination="ZCe-dA-iHg" id="9tY-Zk-3M8"/>
+                        <outlet property="recordLongPressGestureRecognizer" destination="mWq-BB-4mb" id="LPT-Ak-RaY"/>
                         <outlet property="recordedPictureImageView" destination="Rc3-Er-fBS" id="YTU-ki-kFm"/>
                         <outlet property="recordedView" destination="gJI-Fg-0SS" id="lcQ-7s-4e9"/>
                         <outlet property="submitButton" destination="HsF-rs-wle" id="7Nf-77-Oua"/>

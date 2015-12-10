@@ -11,29 +11,19 @@ import UIKit
 private let _railsRequest = RailsRequest()
 private let _default = NSUserDefaults.standardUserDefaults()
 
-private let _API_URL = "https://nameless-plains-2123.herokuapp.com"
-private let _API_URL_REGISTRATION = "https://nameless-plains-2123.herokuapp.com/registrations"
+private let _API_URL = "https://floating-plateau-1275.herokuapp.com"
 private let _USERS_LOGIN = "/login"
 private let _USERS_REGISTER = "/signup"
-private let _USERS_DECK = "/deck"
-private let _ID_CARDS = ":/id/cards"
 
-private let NAME = "name"
+private let NAME = "full_name"
 private let USER = "user"
 private let USERNAME = "username"
 private let PASSWORD = "password"
 private let EMAIL = "email"
 private let ERRORS = "errors"
-private let INDEX = "index"
-private let DECKS = "decks"
-private let TITLE = "title"
-private let ID = "id"
 
 private let OK = "ok"
 private let ERROR = "error"
-
-private let NAVIGATION_CONTROLLER = "GameplayNavigationController"
-private let STORYBORD_NAME = "Gameplay"
 
 private let ACCESS_TOKEN = "access_token" // need to get
 
@@ -69,18 +59,13 @@ class RailsRequest: NSObject {
         set { _default.setObject(newValue, forKey: EMAIL) }
     }
     
-    
     /// The token captured after login/register used to make authenticated API calls.
     var token: String? {
         get { return _default.objectForKey(ACCESS_TOKEN) as? String }
         set { _default.setObject(newValue, forKey: ACCESS_TOKEN) }
         
     }
-    
-    var titles: [[String:AnyObject]]?
-    var ids: [[String:AnyObject]]?
-    
-    /// The base url used when making an API call
+
     private let base = _API_URL
     
     /**
@@ -99,14 +84,13 @@ class RailsRequest: NSObject {
             PASSWORD : password
         
         ]
-        
+    
         requestWithInfo(info) { (returnedInfo) -> () in
-
-            if let user = returnedInfo as? [String:AnyObject] {
+            if let user = returnedInfo?[USER] as? [String:AnyObject] {
                 if let key = user[ACCESS_TOKEN] as? String {
-                    print("key set")
                     self.token = key
                     success(true)
+                    print(success)
 
                 }
                 
@@ -121,45 +105,6 @@ class RailsRequest: NSObject {
         
     }
     
-    func getDecksAndIDs(success: Bool ->() ) {
-        var info = RequestInfo()
-        info.endPoint = "/deck"
-        info.method = .GET
-        info.query = [:]
-        
-        requestWithInfo(info) { (returnedInfo) -> () in
-            print("we should be getting decks")
-
-            if let titles = returnedInfo as? [[String:AnyObject]] {
-                self.titles = titles
-                success(true)
-                
-            } else {
-                success(false)
-            }
-            
-        }
-        
-    }
-    
-    func getCards(succes: Bool -> () ) {
-        var info = RequestInfo()
-        print("deckSelected \(deckSelected)")
-        info.endPoint = "/users/" + String(deckSelected) + "/cards"
-        info.method = .GET
-        info.query = [:]
-        
-        requestWithInfo(info) { (returnedInfo) -> () in
-            if let cards = returnedInfo as? [String:AnyObject] {
-                self.cards = cards
-                succes(true)
-            } else {
-                succes(false)
-            }
-
-        }
-    }
-    
     func registerWithUsername(name: String, username:String, password:String, email:String, success: (Bool) -> ()) {
         var info = RequestInfo()
         info.endPoint = _USERS_REGISTER
@@ -172,28 +117,33 @@ class RailsRequest: NSObject {
         
         ]
         
+        
         requestWithInfo(info) { (returnedInfo) -> () in
             if let user = returnedInfo?[USER] as? [String:AnyObject] {
-                
                 if let name = user[NAME] as? String {
+                    print(name)
                     self.currentName = name
                 }
                 
                 if let username = user[USERNAME] as? String {
+                    print(username)
                     self.currentUsername = username
                 }
                 
                 if let password = user[PASSWORD] as? String {
+                    print(password)
                     self.currentPassword = password
                 }
                 
                 if let email = user[EMAIL] as? String {
+                    print(email)
                     self.currentEmail = email
                 }
                 
                 if let key = user[ACCESS_TOKEN] as? String {
                     self.token = key
                     print(self.token)
+                    print("token obtained")
                     success(true)
                     
                 }
@@ -210,6 +160,21 @@ class RailsRequest: NSObject {
         
     }
     
+    func postPhoto(photo: AnyObject) {
+        var info = RequestInfo()
+        info.endPoint = "/journeys/1/images"
+        info.method = .POST
+        info.parameters = [
+            "photo": photo
+        
+        ]
+        
+    requestWithInfo(info) { (returnedInfo) -> () in
+        
+        }
+        
+    }
+    
     /**
      Makes a generic request to the API, configured by the info parameter
      
@@ -219,6 +184,7 @@ class RailsRequest: NSObject {
     
     func requestWithInfo(info: RequestInfo, completion: (returnedInfo:AnyObject?) -> ()) {
         var fullURLString = base + info.endPoint
+        print(fullURLString)
         
         for (i,(k,v)) in info.query.enumerate() {
             if i == 0 { fullURLString += "?" } else { fullURLString += "&" }
@@ -233,6 +199,7 @@ class RailsRequest: NSObject {
         request.HTTPMethod = info.method.rawValue
         
         if let token = token {
+            print(token)
             request.setValue(token, forHTTPHeaderField: ACCESS_TOKEN)
 
         }
@@ -272,7 +239,6 @@ class RailsRequest: NSObject {
     }
     
 }
-
 
 struct RequestInfo {
     enum MethodType:String {

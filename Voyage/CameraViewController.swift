@@ -12,8 +12,13 @@ import Photos
 import AssetsLibrary
 
 private let EMPTY_STRING = ""
+private let MAPVC = "MapVC"
+private let STORYBOARDID = "Map"
 
 class CameraViewController: UIViewController, UIGestureRecognizerDelegate, CLLocationManagerDelegate {
+    
+    //MARK: - Properties
+    var viewLoaded = false
     
     //MARK: - @IBOutlets
     @IBOutlet var previewView: PreviewView!
@@ -24,6 +29,8 @@ class CameraViewController: UIViewController, UIGestureRecognizerDelegate, CLLoc
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var textButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet var recordLongPressGestureRecognizer: UILongPressGestureRecognizer!
     
     //MARK: - @IBActions
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -72,6 +79,14 @@ class CameraViewController: UIViewController, UIGestureRecognizerDelegate, CLLoc
         }
         
     }
+    
+    @IBAction func mapButtonPressed(sender: AnyObject) {
+        
+        let vc = UIStoryboard(name: STORYBOARDID, bundle: nil).instantiateViewControllerWithIdentifier(MAPVC)
+        presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    
     //MARK: - Properties
     //Session
     var session: AVCaptureSession?
@@ -208,22 +223,23 @@ class CameraViewController: UIViewController, UIGestureRecognizerDelegate, CLLoc
         
     }
     
-    
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         messageTextField.delegate = self
         record.adjustsImageWhenHighlighted = false
         record.adjustsImageWhenDisabled = false
+        recordLongPressGestureRecognizer.delegate = self
         
         let textFieldGestureRecognizer = UIGestureRecognizer(target: self, action: "moveVertically:")
         
         //        messageTextField.addGestureRecognizer(textFieldGestureRecognizer)
         
         textButton.setTitle("T", forState: .Normal)
-        textButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.50), forState: .Normal)
+        textButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
         cancelImageButton.setTitle("X", forState: .Normal)
-        cancelImageButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.50), forState: .Normal)
+        cancelImageButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
+        mapButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
         messageTextField.hidden = true
         
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedRecordButton:")
@@ -298,11 +314,104 @@ class CameraViewController: UIViewController, UIGestureRecognizerDelegate, CLLoc
             self.record.addGestureRecognizer(tapGestureRecognizer)
             
         }
-        
+
     }
     
     //MARK: - viewDidAppear()
     override func viewDidAppear(animated: Bool) {
+            super.viewDidLoad()
+    
+            if viewLoaded == true {
+            messageTextField.delegate = self
+            record.adjustsImageWhenHighlighted = false
+            record.adjustsImageWhenDisabled = false
+            
+            let textFieldGestureRecognizer = UIGestureRecognizer(target: self, action: "moveVertically:")
+            
+            //        messageTextField.addGestureRecognizer(textFieldGestureRecognizer)
+            
+            textButton.setTitle("T", forState: .Normal)
+            textButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
+            cancelImageButton.setTitle("X", forState: .Normal)
+            cancelImageButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
+            mapButton.setTitleColor(UIColor.blackColor().colorWithAlphaComponent(0.80), forState: .Normal)
+            messageTextField.hidden = true
+            
+            var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedRecordButton:")
+            tapGestureRecognizer.delegate = self
+            
+            recordedPictureImageView.hidden = true
+            recordedView.hidden = true
+            
+            let session: AVCaptureSession = AVCaptureSession()
+            self.session = session
+            
+            previewView.session = session
+            
+            let sessionQueue: dispatch_queue_t = dispatch_queue_create("sessionQueue", DISPATCH_QUEUE_SERIAL)
+            self.sessionQueue = sessionQueue
+            
+            dispatch_async(sessionQueue) { () -> Void in
+                
+                let preferredPosition: AVCaptureDevicePosition = AVCaptureDevicePosition.Unspecified
+                
+                let videoDevice: AVCaptureDevice = CameraViewController.deviceWithMediaType(AVMediaTypeVideo, preferringPosition: preferredPosition)
+                var videoDeviceInput: AVCaptureDeviceInput?
+                do {
+                    videoDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
+                } catch let error1 as NSError {
+                    self.error = error1
+                    videoDeviceInput = nil
+                } catch {
+                    fatalError()
+                }
+                
+                if session.canAddInput(videoDeviceInput) {
+                    session.addInput(videoDeviceInput)
+                    self.visualInput = videoDeviceInput
+                    
+                }
+                
+                let audioDevice: AVCaptureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio).first as! AVCaptureDevice
+                var audioDeviceInput: AVCaptureDeviceInput?
+                
+                do {
+                    audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice)
+                } catch let error2 as NSError? {
+                    self.error = error2
+                    audioDeviceInput = nil
+                } catch {
+                    fatalError()
+                }
+                
+                if session.canAddInput(audioDeviceInput) {
+                    session.addInput(audioDeviceInput)
+                    self.audioInput = audioDeviceInput
+                    
+                }
+                
+                let movieFileOutput:AVCaptureMovieFileOutput = AVCaptureMovieFileOutput()
+                if session.canAddOutput(movieFileOutput) {
+                    session.addOutput(movieFileOutput)
+                    self.movieFileOutput = movieFileOutput
+                }
+                
+                let stillImageOutput:AVCaptureStillImageOutput = AVCaptureStillImageOutput()
+                if session.canAddOutput(stillImageOutput) {
+                    stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+                    session.addOutput(stillImageOutput)
+                    self.stillImageOutput = stillImageOutput
+                    print("stillImageSet")
+                    print(stillImageOutput)
+                }
+                
+                session.startRunning()
+                self.record.addGestureRecognizer(tapGestureRecognizer)
+                
+            }
+
+        }
+        viewLoaded = true
         
     }
     

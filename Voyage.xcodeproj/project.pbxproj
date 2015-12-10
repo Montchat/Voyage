@@ -10,6 +10,9 @@
 		2B614DFC1BF765380020BE4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B614DFB1BF765380020BE4E /* AppDelegate.swift */; };
 		2B614E031BF765390020BE4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B614E021BF765390020BE4E /* Assets.xcassets */; };
 		2B614E061BF765390020BE4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B614E041BF765390020BE4E /* LaunchScreen.storyboard */; };
+		2B75662F1BF78F9100087A09 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B75662E1BF78F9100087A09 /* MapViewController.swift */; };
+		2B7566311BF78FB600087A09 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B7566301BF78FB600087A09 /* Map.storyboard */; };
+		2B7566331BF791DA00087A09 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7566321BF791DA00087A09 /* MapKit.framework */; };
 		2BFB35A01BF766590053BC23 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB359F1BF766590053BC23 /* LoginViewController.swift */; };
 		2BFB35A21BF766610053BC23 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB35A11BF766610053BC23 /* InitialViewController.swift */; };
 		2BFB35A41BF7666A0053BC23 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFB35A31BF7666A0053BC23 /* Login.storyboard */; };
@@ -26,6 +29,9 @@
 		2B614E021BF765390020BE4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B614E051BF765390020BE4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B614E071BF765390020BE4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B75662E1BF78F9100087A09 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2B7566301BF78FB600087A09 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		2B7566321BF791DA00087A09 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2BFB359F1BF766590053BC23 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2BFB35A11BF766610053BC23 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		2BFB35A31BF7666A0053BC23 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -41,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7566331BF791DA00087A09 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,7 @@
 		2B614DEF1BF765380020BE4E = {
 			isa = PBXGroup;
 			children = (
+				2B7566321BF791DA00087A09 /* MapKit.framework */,
 				2B614DFA1BF765380020BE4E /* Voyage */,
 				2B614DF91BF765380020BE4E /* Products */,
 			);
@@ -71,6 +79,8 @@
 				2BFB35A91BF767300053BC23 /* Camera.storyboard */,
 				2BFB35B21BF768A50053BC23 /* CameraViewControllers */,
 				2BFB35AF1BF768850053BC23 /* RailsRequest.swift */,
+				2B7566301BF78FB600087A09 /* Map.storyboard */,
+				2B75662E1BF78F9100087A09 /* MapViewController.swift */,
 				2BFB35B41BF768B70053BC23 /* System */,
 			);
 			path = Voyage;
@@ -166,6 +176,7 @@
 			files = (
 				2BFB35A41BF7666A0053BC23 /* Login.storyboard in Resources */,
 				2B614E061BF765390020BE4E /* LaunchScreen.storyboard in Resources */,
+				2B7566311BF78FB600087A09 /* Map.storyboard in Resources */,
 				2B614E031BF765390020BE4E /* Assets.xcassets in Resources */,
 				2BFB35AA1BF767300053BC23 /* Camera.storyboard in Resources */,
 			);
@@ -185,6 +196,7 @@
 				2BFB35A81BF7671B0053BC23 /* CameraViewController.swift in Sources */,
 				2BFB35A01BF766590053BC23 /* LoginViewController.swift in Sources */,
 				2B614DFC1BF765380020BE4E /* AppDelegate.swift in Sources */,
+				2B75662F1BF78F9100087A09 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
